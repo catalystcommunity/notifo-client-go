@@ -1,5 +1,5 @@
 {
-  "x-generator": "NSwag v13.16.1.0 (NJsonSchema v10.7.2.0 (Newtonsoft.Json v13.0.0.0))",
+  "x-generator": "NSwag v13.17.0.0 (NJsonSchema v10.8.0.0 (Newtonsoft.Json v13.0.0.0))",
   "openapi": "3.0.0",
   "info": {
     "title": "Notifo API",
@@ -8,11 +8,6 @@
       "url": "/logo.svg"
     }
   },
-  "servers": [
-    {
-      "url": "https://notifo.prodmk8s.com"
-    }
-  ],
   "paths": {
     "/api/me": {
       "get": {
@@ -33,17 +28,7 @@
             }
           },
           "500": {
-            "description": "Operation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Validation error",
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -84,8 +69,8 @@
               }
             }
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -94,8 +79,39 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/me/admin": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get the current admin user.",
+        "operationId": "User_GetAdminUser",
+        "responses": {
+          "200": {
+            "description": "User returned.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminProfileDto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -141,17 +157,7 @@
             }
           },
           "500": {
-            "description": "Operation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Validation error",
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -224,17 +230,7 @@
             }
           },
           "500": {
-            "description": "Operation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Validation error",
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -269,8 +265,8 @@
           "204": {
             "description": "User subscribed."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -279,8 +275,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -307,7 +303,8 @@
             "required": true,
             "description": "The topic path.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           }
@@ -327,17 +324,7 @@
             "description": "Subscription does not exist."
           },
           "500": {
-            "description": "Operation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Validation error",
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -364,7 +351,8 @@
             "required": true,
             "description": "The topic prefix.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           }
@@ -373,8 +361,8 @@
           "204": {
             "description": "User unsubscribed."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -383,8 +371,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -410,7 +398,8 @@
             "required": true,
             "description": "The app where the users belongs to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
@@ -470,17 +459,7 @@
             "description": "App not found."
           },
           "500": {
-            "description": "Operation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Validation error",
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -504,7 +483,8 @@
             "required": true,
             "description": "The app where the users belong to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           }
@@ -539,8 +519,8 @@
           "404": {
             "description": "App not found."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -549,8 +529,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -576,7 +556,8 @@
             "required": true,
             "description": "The app where the user belongs to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
@@ -586,7 +567,8 @@
             "required": true,
             "description": "The user ID.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 2
           },
@@ -616,17 +598,7 @@
             "description": "User or app not found."
           },
           "500": {
-            "description": "Operation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Validation error",
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -650,7 +622,8 @@
             "required": true,
             "description": "The app where the users belongs to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
@@ -660,7 +633,8 @@
             "required": true,
             "description": "The user id to delete.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 2
           }
@@ -672,8 +646,8 @@
           "404": {
             "description": "App not found."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -682,8 +656,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -709,7 +683,8 @@
             "required": true,
             "description": "The app where the user belongs to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
@@ -719,7 +694,8 @@
             "required": true,
             "description": "The user ID.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 2
           },
@@ -769,17 +745,7 @@
             "description": "User or app not found."
           },
           "500": {
-            "description": "Operation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Validation error",
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -803,7 +769,8 @@
             "required": true,
             "description": "The app where the user belongs to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
@@ -813,7 +780,8 @@
             "required": true,
             "description": "The user ID.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 2
           }
@@ -838,8 +806,8 @@
           "404": {
             "description": "User or app not found."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -848,8 +816,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -875,7 +843,8 @@
             "required": true,
             "description": "The app where the user belongs to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
@@ -885,7 +854,8 @@
             "required": true,
             "description": "The user ID.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 2
           },
@@ -895,7 +865,8 @@
             "required": true,
             "description": "The topic prefix.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 3
           }
@@ -907,8 +878,8 @@
           "404": {
             "description": "User or app not found."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -917,8 +888,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -944,7 +915,8 @@
             "required": true,
             "description": "The app where the users belong to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
@@ -954,7 +926,8 @@
             "required": true,
             "description": "The user ID.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 2
           }
@@ -979,8 +952,8 @@
           "404": {
             "description": "User or app not found."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -989,8 +962,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1016,7 +989,8 @@
             "required": true,
             "description": "The app where the users belong to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
@@ -1026,7 +1000,8 @@
             "required": true,
             "description": "The user ID.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 2
           },
@@ -1036,7 +1011,8 @@
             "required": true,
             "description": "The topic prefix.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 3
           }
@@ -1048,8 +1024,8 @@
           "404": {
             "description": "User or app not found."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1058,8 +1034,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1085,7 +1061,8 @@
             "required": true,
             "description": "The app where the users belong to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
@@ -1095,7 +1072,8 @@
             "required": true,
             "description": "The user ID.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 2
           },
@@ -1105,7 +1083,8 @@
             "required": true,
             "description": "The token.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 3
           }
@@ -1117,8 +1096,8 @@
           "404": {
             "description": "User or app not found."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1127,8 +1106,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1154,7 +1133,8 @@
             "required": true,
             "description": "The app where the users belong to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
@@ -1164,7 +1144,8 @@
             "required": true,
             "description": "The user ID.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 2
           },
@@ -1174,7 +1155,8 @@
             "required": true,
             "description": "The endpoint.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 3
           }
@@ -1186,8 +1168,8 @@
           "404": {
             "description": "User or app not found."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1196,8 +1178,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1223,7 +1205,8 @@
             "required": true,
             "description": "The app where the topics belongs to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
@@ -1282,17 +1265,7 @@
             "description": "App not found."
           },
           "500": {
-            "description": "Operation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Validation error",
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1316,7 +1289,8 @@
             "required": true,
             "description": "The app where the topics belong to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           }
@@ -1348,8 +1322,8 @@
               }
             }
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1358,8 +1332,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1371,7 +1345,7 @@
         }
       }
     },
-    "/api/apps/{appId}/topics/{id}": {
+    "/api/apps/{appId}/topics/{path}": {
       "delete": {
         "tags": [
           "Topics"
@@ -1385,17 +1359,19 @@
             "required": true,
             "description": "The app where the topics belong to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
           {
-            "name": "id",
+            "name": "path",
             "in": "path",
             "required": true,
-            "description": "The ID of the topic to delete.",
+            "description": "The path of the topic to delete.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 2
           }
@@ -1404,8 +1380,8 @@
           "204": {
             "description": "Topic deleted."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1414,8 +1390,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1441,7 +1417,8 @@
             "required": true,
             "description": "The app where the templates belongs to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
@@ -1488,17 +1465,7 @@
             }
           },
           "500": {
-            "description": "Operation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Validation error",
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1522,7 +1489,8 @@
             "required": true,
             "description": "The app where the templates belong to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           }
@@ -1554,8 +1522,8 @@
               }
             }
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1564,8 +1532,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1591,7 +1559,8 @@
             "required": true,
             "description": "The app where the templates belong to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
@@ -1601,7 +1570,8 @@
             "required": true,
             "description": "The template code to delete.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 2
           }
@@ -1610,8 +1580,8 @@
           "204": {
             "description": "Template deleted."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1620,8 +1590,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1684,17 +1654,7 @@
             }
           },
           "500": {
-            "description": "Operation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Validation error",
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1735,8 +1695,8 @@
               }
             }
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1745,8 +1705,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1772,30 +1732,28 @@
             "required": true,
             "description": "The user ID.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           }
         ],
         "responses": {
           "200": {
-            "description": "User returned."
+            "description": "User returned.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SystemUserDto"
+                }
+              }
+            }
           },
           "404": {
             "description": "User not found."
           },
           "500": {
-            "description": "Operation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Validation error",
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1819,7 +1777,8 @@
             "required": true,
             "description": "The user ID.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           }
@@ -1858,8 +1817,8 @@
               }
             }
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1868,8 +1827,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1893,7 +1852,8 @@
             "required": true,
             "description": "The user ID.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           }
@@ -1912,8 +1872,8 @@
               }
             }
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1922,8 +1882,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1949,7 +1909,8 @@
             "required": true,
             "description": "The user ID.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           }
@@ -1975,8 +1936,8 @@
               }
             }
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1985,8 +1946,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2012,7 +1973,8 @@
             "required": true,
             "description": "The user ID.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           }
@@ -2038,8 +2000,8 @@
               }
             }
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2048,8 +2010,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2074,7 +2036,7 @@
             "description": "Service ping successful."
           },
           "500": {
-            "description": "Operation failed",
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2082,9 +2044,111 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/api/apps/{appId}/notifications": {
+      "get": {
+        "tags": [
+          "Notifications"
+        ],
+        "summary": "Query notifications.",
+        "operationId": "Notifications_GetAllNotifications",
+        "parameters": [
+          {
+            "name": "appId",
+            "in": "path",
+            "required": true,
+            "description": "The app where the user belongs to.",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 1
           },
-          "400": {
-            "description": "Validation error",
+          {
+            "name": "Channels",
+            "in": "query",
+            "style": "form",
+            "explode": true,
+            "description": "The active channels.",
+            "schema": {
+              "type": "array",
+              "nullable": true,
+              "items": {
+                "type": "string"
+              }
+            },
+            "x-position": 2
+          },
+          {
+            "name": "Channel",
+            "in": "query",
+            "description": "The source channel.",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 3
+          },
+          {
+            "name": "CorrelationId",
+            "in": "query",
+            "description": "The correlation ID, that can be used to query notifications.",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 4
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "description": "The optional query to search for items.",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 5
+          },
+          {
+            "name": "take",
+            "in": "query",
+            "description": "The number of items to return.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 6
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "description": "The number of items to skip.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 7
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User notifications returned.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListResponseDtoOfUserNotificationDetailsDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User or app not found."
+          },
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2110,7 +2174,8 @@
             "required": true,
             "description": "The app where the user belongs to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
@@ -2120,7 +2185,8 @@
             "required": true,
             "description": "The user id.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 2
           },
@@ -2136,6 +2202,127 @@
               "items": {
                 "type": "string"
               }
+            },
+            "x-position": 3
+          },
+          {
+            "name": "Channel",
+            "in": "query",
+            "description": "The source channel.",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 4
+          },
+          {
+            "name": "CorrelationId",
+            "in": "query",
+            "description": "The correlation ID, that can be used to query notifications.",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 5
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "description": "The optional query to search for items.",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 6
+          },
+          {
+            "name": "take",
+            "in": "query",
+            "description": "The number of items to return.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 7
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "description": "The number of items to skip.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 8
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User notifications returned.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListResponseDtoOfUserNotificationDetailsDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User or app not found."
+          },
+          "500": {
+            "description": "Operation failed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/me/notifications": {
+      "get": {
+        "tags": [
+          "Notifications"
+        ],
+        "summary": "Query user notifications of the current user.",
+        "operationId": "Notifications_GetMyNotifications",
+        "parameters": [
+          {
+            "name": "Channels",
+            "in": "query",
+            "style": "form",
+            "explode": true,
+            "description": "The active channels.",
+            "schema": {
+              "type": "array",
+              "nullable": true,
+              "items": {
+                "type": "string"
+              }
+            },
+            "x-position": 1
+          },
+          {
+            "name": "Channel",
+            "in": "query",
+            "description": "The source channel.",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 2
+          },
+          {
+            "name": "CorrelationId",
+            "in": "query",
+            "description": "The correlation ID, that can be used to query notifications.",
+            "schema": {
+              "type": "string",
+              "nullable": true
             },
             "x-position": 3
           },
@@ -2172,30 +2359,17 @@
         ],
         "responses": {
           "200": {
-            "description": "User notifications returned.",
+            "description": "Notifications returned.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ListResponseDtoOfUserNotificationDetailsDto"
+                  "$ref": "#/components/schemas/ListResponseDtoOfUserNotificationDto"
                 }
               }
             }
-          },
-          "404": {
-            "description": "User or app not found."
           },
           "500": {
-            "description": "Operation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Validation error",
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2207,53 +2381,90 @@
         }
       }
     },
-    "/api/me/notifications": {
+    "/api/me/notifications/archive": {
       "get": {
         "tags": [
           "Notifications"
         ],
-        "summary": "Query user notifications of the current user.",
-        "operationId": "Notifications_GetMyNotifications",
+        "summary": "Query archived user notifications of the current user.",
+        "operationId": "Notifications_GetMyArchive",
         "parameters": [
           {
-            "name": "Channels",
+            "name": "channel",
             "in": "query",
-            "style": "form",
-            "explode": true,
-            "description": "The active channels.",
-            "schema": {
-              "type": "array",
-              "nullable": true,
-              "items": {
-                "type": "string"
-              }
-            },
-            "x-position": 1
-          },
-          {
-            "name": "query",
-            "in": "query",
-            "description": "The optional query to search for items.",
+            "description": "The tracking channel.",
             "schema": {
               "type": "string",
               "nullable": true
             },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Notifications returned.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListResponseDtoOfUserNotificationDto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Operation failed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/me/notifications/device": {
+      "get": {
+        "tags": [
+          "Notifications"
+        ],
+        "summary": "Query user notifications of the current user for a specific device.",
+        "operationId": "Notifications_GetMyDeviceNotifications",
+        "parameters": [
+          {
+            "name": "DeviceIdentifier",
+            "in": "query",
+            "description": "The device identifier (aka mobile push token).",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 1
+          },
+          {
+            "name": "After",
+            "in": "query",
+            "description": "The max age of the notifications.",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
             "x-position": 2
           },
           {
-            "name": "take",
+            "name": "IncludeUnseen",
             "in": "query",
-            "description": "The number of items to return.",
+            "description": "True to also include unseen notifications.",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "boolean"
             },
             "x-position": 3
           },
           {
-            "name": "skip",
+            "name": "Take",
             "in": "query",
-            "description": "The number of items to skip.",
+            "description": "The number of notifications to query.",
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -2273,58 +2484,7 @@
             }
           },
           "500": {
-            "description": "Operation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Validation error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/me/notifications/archive": {
-      "get": {
-        "tags": [
-          "Notifications"
-        ],
-        "summary": "Query archhived user notifications of the current user.",
-        "operationId": "Notifications_GetMyArchive",
-        "responses": {
-          "200": {
-            "description": "Notifications returned.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ListResponseDtoOfUserNotificationDto"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Operation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Validation error",
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2360,8 +2520,8 @@
           "204": {
             "description": "Notifications updated."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2370,8 +2530,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2402,17 +2562,7 @@
             }
           },
           "500": {
-            "description": "Operation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Validation error",
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2446,8 +2596,8 @@
           "204": {
             "description": "Mobile push token registered."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2456,8 +2606,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2483,7 +2633,8 @@
             "required": true,
             "description": "The token to remove.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           }
@@ -2492,8 +2643,8 @@
           "204": {
             "description": "Mobile push token removed."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2502,8 +2653,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2529,7 +2680,8 @@
             "required": true,
             "description": "The app where the media belongs to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
@@ -2579,17 +2731,7 @@
             "description": "App not found."
           },
           "500": {
-            "description": "Operation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Validation error",
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2613,7 +2755,8 @@
             "required": true,
             "description": "The app id where the media belongs to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           }
@@ -2641,8 +2784,8 @@
           "404": {
             "description": "App not found."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2651,8 +2794,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2678,7 +2821,8 @@
             "required": true,
             "description": "The app id where the media belongs to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
@@ -2688,7 +2832,8 @@
             "required": true,
             "description": "The name of the media to download.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 2
           },
@@ -2713,6 +2858,16 @@
             "x-position": 4
           },
           {
+            "name": "bg",
+            "in": "query",
+            "description": "Optional background color.",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 5
+          },
+          {
             "name": "width",
             "in": "query",
             "description": "The target width when an image.",
@@ -2721,7 +2876,7 @@
               "format": "int32",
               "nullable": true
             },
-            "x-position": 5
+            "x-position": 6
           },
           {
             "name": "height",
@@ -2732,7 +2887,7 @@
               "format": "int32",
               "nullable": true
             },
-            "x-position": 6
+            "x-position": 7
           },
           {
             "name": "quality",
@@ -2743,7 +2898,7 @@
               "format": "int32",
               "nullable": true
             },
-            "x-position": 7
+            "x-position": 8
           },
           {
             "name": "preset",
@@ -2753,7 +2908,7 @@
               "type": "string",
               "nullable": true
             },
-            "x-position": 8
+            "x-position": 9
           },
           {
             "name": "mode",
@@ -2763,7 +2918,7 @@
               "nullable": true,
               "$ref": "#/components/schemas/ResizeMode"
             },
-            "x-position": 9
+            "x-position": 10
           },
           {
             "name": "focusX",
@@ -2774,7 +2929,7 @@
               "format": "float",
               "nullable": true
             },
-            "x-position": 10
+            "x-position": 11
           },
           {
             "name": "focusY",
@@ -2785,7 +2940,7 @@
               "format": "float",
               "nullable": true
             },
-            "x-position": 11
+            "x-position": 12
           },
           {
             "name": "force",
@@ -2794,7 +2949,16 @@
             "schema": {
               "type": "boolean"
             },
-            "x-position": 12
+            "x-position": 13
+          },
+          {
+            "name": "emptyOnFailure",
+            "in": "query",
+            "description": "True, to return an empty image on failure.",
+            "schema": {
+              "type": "boolean"
+            },
+            "x-position": 14
           }
         ],
         "responses": {
@@ -2813,17 +2977,7 @@
             "description": "Media or app not found."
           },
           "500": {
-            "description": "Operation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Validation error",
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2847,7 +3001,8 @@
             "required": true,
             "description": "The app id where the media belongs to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
@@ -2857,7 +3012,8 @@
             "required": true,
             "description": "The file name of the media.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 2
           }
@@ -2869,8 +3025,8 @@
           "404": {
             "description": "App not found."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2879,8 +3035,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2892,7 +3048,7 @@
         }
       }
     },
-    "/api/assets/{appId}/{fileName}": {
+    "/api/asset/{appId}/{fileName}": {
       "get": {
         "tags": [
           "Media"
@@ -2906,7 +3062,8 @@
             "required": true,
             "description": "The app id where the media belongs to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
@@ -2916,7 +3073,8 @@
             "required": true,
             "description": "The name of the media to download.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 2
           },
@@ -2937,6 +3095,368 @@
             "schema": {
               "type": "integer",
               "format": "int32"
+            },
+            "x-position": 4
+          },
+          {
+            "name": "bg",
+            "in": "query",
+            "description": "Optional background color.",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 5
+          },
+          {
+            "name": "width",
+            "in": "query",
+            "description": "The target width when an image.",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            },
+            "x-position": 6
+          },
+          {
+            "name": "height",
+            "in": "query",
+            "description": "The target height when an image.",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            },
+            "x-position": 7
+          },
+          {
+            "name": "quality",
+            "in": "query",
+            "description": "The target quality when an image.",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            },
+            "x-position": 8
+          },
+          {
+            "name": "preset",
+            "in": "query",
+            "description": "A preset dimension.",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 9
+          },
+          {
+            "name": "mode",
+            "in": "query",
+            "description": "The resize mode.",
+            "schema": {
+              "nullable": true,
+              "$ref": "#/components/schemas/ResizeMode"
+            },
+            "x-position": 10
+          },
+          {
+            "name": "focusX",
+            "in": "query",
+            "description": "The x position of the focues point.",
+            "schema": {
+              "type": "number",
+              "format": "float",
+              "nullable": true
+            },
+            "x-position": 11
+          },
+          {
+            "name": "focusY",
+            "in": "query",
+            "description": "The y position of the focues point.",
+            "schema": {
+              "type": "number",
+              "format": "float",
+              "nullable": true
+            },
+            "x-position": 12
+          },
+          {
+            "name": "force",
+            "in": "query",
+            "description": "True to resize it and clear the cache.",
+            "schema": {
+              "type": "boolean"
+            },
+            "x-position": 13
+          },
+          {
+            "name": "emptyOnFailure",
+            "in": "query",
+            "description": "True, to return an empty image on failure.",
+            "schema": {
+              "type": "boolean"
+            },
+            "x-position": 14
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Media returned.",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Media or app not found."
+          },
+          "500": {
+            "description": "Operation failed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/assets/{appId}/{fileName}": {
+      "get": {
+        "tags": [
+          "Media"
+        ],
+        "summary": "Download a media object.",
+        "operationId": "Media_Download3",
+        "parameters": [
+          {
+            "name": "appId",
+            "in": "path",
+            "required": true,
+            "description": "The app id where the media belongs to.",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 1
+          },
+          {
+            "name": "fileName",
+            "in": "path",
+            "required": true,
+            "description": "The name of the media to download.",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 2
+          },
+          {
+            "name": "cache",
+            "in": "query",
+            "description": "The cache duration.",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "x-position": 3
+          },
+          {
+            "name": "download",
+            "in": "query",
+            "description": "Set it to 1 to create a download response.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 4
+          },
+          {
+            "name": "bg",
+            "in": "query",
+            "description": "Optional background color.",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 5
+          },
+          {
+            "name": "width",
+            "in": "query",
+            "description": "The target width when an image.",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            },
+            "x-position": 6
+          },
+          {
+            "name": "height",
+            "in": "query",
+            "description": "The target height when an image.",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            },
+            "x-position": 7
+          },
+          {
+            "name": "quality",
+            "in": "query",
+            "description": "The target quality when an image.",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            },
+            "x-position": 8
+          },
+          {
+            "name": "preset",
+            "in": "query",
+            "description": "A preset dimension.",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 9
+          },
+          {
+            "name": "mode",
+            "in": "query",
+            "description": "The resize mode.",
+            "schema": {
+              "nullable": true,
+              "$ref": "#/components/schemas/ResizeMode"
+            },
+            "x-position": 10
+          },
+          {
+            "name": "focusX",
+            "in": "query",
+            "description": "The x position of the focues point.",
+            "schema": {
+              "type": "number",
+              "format": "float",
+              "nullable": true
+            },
+            "x-position": 11
+          },
+          {
+            "name": "focusY",
+            "in": "query",
+            "description": "The y position of the focues point.",
+            "schema": {
+              "type": "number",
+              "format": "float",
+              "nullable": true
+            },
+            "x-position": 12
+          },
+          {
+            "name": "force",
+            "in": "query",
+            "description": "True to resize it and clear the cache.",
+            "schema": {
+              "type": "boolean"
+            },
+            "x-position": 13
+          },
+          {
+            "name": "emptyOnFailure",
+            "in": "query",
+            "description": "True, to return an empty image on failure.",
+            "schema": {
+              "type": "boolean"
+            },
+            "x-position": 14
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Media returned.",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Media or app not found."
+          },
+          "500": {
+            "description": "Operation failed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/assets/proxy": {
+      "get": {
+        "tags": [
+          "Media"
+        ],
+        "summary": "Download a media object.",
+        "operationId": "MediaProxy_ProxyImage",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "description": "The app id where the media belongs to.",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 1
+          },
+          {
+            "name": "cache",
+            "in": "query",
+            "description": "The cache duration.",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "x-position": 2
+          },
+          {
+            "name": "download",
+            "in": "query",
+            "description": "Set it to 1 to create a download response.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 3
+          },
+          {
+            "name": "bg",
+            "in": "query",
+            "description": "Optional background color.",
+            "schema": {
+              "type": "string",
+              "nullable": true
             },
             "x-position": 4
           },
@@ -3023,6 +3543,15 @@
               "type": "boolean"
             },
             "x-position": 12
+          },
+          {
+            "name": "emptyOnFailure",
+            "in": "query",
+            "description": "True, to return an empty image on failure.",
+            "schema": {
+              "type": "boolean"
+            },
+            "x-position": 13
           }
         ],
         "responses": {
@@ -3041,17 +3570,7 @@
             "description": "Media or app not found."
           },
           "500": {
-            "description": "Operation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Validation error",
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3077,7 +3596,8 @@
             "required": true,
             "description": "The app where the log entries belongs to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
@@ -3127,17 +3647,7 @@
             "description": "App not found."
           },
           "500": {
-            "description": "Operation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Validation error",
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3163,7 +3673,8 @@
             "required": true,
             "description": "The app where the events belongs to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
@@ -3228,17 +3739,7 @@
             "description": "App not found."
           },
           "500": {
-            "description": "Operation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Validation error",
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3262,7 +3763,8 @@
             "required": true,
             "description": "The app where the events belongs to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           }
@@ -3287,8 +3789,8 @@
           "404": {
             "description": "App not found."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3297,8 +3799,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3337,8 +3839,8 @@
           "404": {
             "description": "App not found."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3347,8 +3849,76 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/diagnostics/dump": {
+      "get": {
+        "tags": [
+          "Diagnostics"
+        ],
+        "summary": "Creates a dump and writes it into storage..",
+        "operationId": "Diagnostics_GetDump",
+        "responses": {
+          "204": {
+            "description": "Dump created successful."
+          },
+          "501": {
+            "description": "Not configured.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Operation failed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/diagnostics/gcdump": {
+      "get": {
+        "tags": [
+          "Diagnostics"
+        ],
+        "summary": "Creates a gc dump and writes it into storage.",
+        "operationId": "Diagnostics_GetGCDump",
+        "responses": {
+          "204": {
+            "description": "Dump created successful."
+          },
+          "501": {
+            "description": "Not configured.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3382,17 +3952,7 @@
             }
           },
           "500": {
-            "description": "Operation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Validation error",
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3426,17 +3986,7 @@
             }
           },
           "500": {
-            "description": "Operation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Validation error",
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3462,7 +4012,8 @@
             "required": true,
             "description": "The id of the app where the templates belong to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
@@ -3472,7 +4023,8 @@
             "required": true,
             "description": "The template ID.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 2
           }
@@ -3493,17 +4045,7 @@
             "description": "Channel template not found."
           },
           "500": {
-            "description": "Operation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Validation error",
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3529,7 +4071,8 @@
             "required": true,
             "description": "The id of the app where the templates belong to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           }
@@ -3561,8 +4104,8 @@
           "404": {
             "description": "App not found."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3571,8 +4114,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3598,7 +4141,8 @@
             "required": true,
             "description": "The id of the app where the templates belong to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
@@ -3648,17 +4192,7 @@
             "description": "Channel template or app not found."
           },
           "500": {
-            "description": "Operation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Validation error",
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3682,7 +4216,8 @@
             "required": true,
             "description": "The id of the app where the templates belong to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           }
@@ -3714,8 +4249,8 @@
           "404": {
             "description": "App not found."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3724,8 +4259,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3751,7 +4286,8 @@
             "required": true,
             "description": "The id of the app where the templates belong to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
@@ -3761,7 +4297,8 @@
             "required": true,
             "description": "The template ID.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 2
           }
@@ -3781,17 +4318,7 @@
             "description": "Channel template or app not found."
           },
           "500": {
-            "description": "Operation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Validation error",
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3801,7 +4328,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/apps/{appId}/email-templates/{code}": {
       "post": {
         "tags": [
           "EmailTemplates"
@@ -3815,17 +4344,19 @@
             "required": true,
             "description": "The id of the app where the templates belong to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
           {
-            "name": "id",
+            "name": "code",
             "in": "path",
             "required": true,
-            "description": "The template ID.",
+            "description": "The template code.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 2
           }
@@ -3857,8 +4388,8 @@
           "404": {
             "description": "Channel template or app not found."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3867,8 +4398,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3892,17 +4423,19 @@
             "required": true,
             "description": "The id of the app where the templates belong to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
           {
-            "name": "id",
+            "name": "code",
             "in": "path",
             "required": true,
-            "description": "The template ID.",
+            "description": "The template code.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 2
           }
@@ -3927,8 +4460,8 @@
           "404": {
             "description": "Channel template or app not found."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3937,8 +4470,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3962,17 +4495,19 @@
             "required": true,
             "description": "The id of the app where the templates belong to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
           {
-            "name": "id",
+            "name": "code",
             "in": "path",
             "required": true,
             "description": "The template ID.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 2
           }
@@ -3984,8 +4519,8 @@
           "404": {
             "description": "Channel template or app not found."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3994,8 +4529,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4007,7 +4542,7 @@
         }
       }
     },
-    "/api/apps/{appId}/email-templates/{id}/{language}": {
+    "/api/apps/{appId}/email-templates/{code}/{language}": {
       "put": {
         "tags": [
           "EmailTemplates"
@@ -4021,17 +4556,19 @@
             "required": true,
             "description": "The id of the app where the templates belong to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
           {
-            "name": "id",
+            "name": "code",
             "in": "path",
             "required": true,
-            "description": "The template ID.",
+            "description": "The template code.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 2
           },
@@ -4041,7 +4578,8 @@
             "required": true,
             "description": "The language.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 3
           }
@@ -4066,8 +4604,8 @@
           "404": {
             "description": "Channel template or app not found."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4076,8 +4614,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4101,17 +4639,19 @@
             "required": true,
             "description": "The id of the app where the templates belong to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
           {
-            "name": "id",
+            "name": "code",
             "in": "path",
             "required": true,
             "description": "The template ID.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 2
           },
@@ -4121,7 +4661,8 @@
             "required": true,
             "description": "The language.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 3
           }
@@ -4133,8 +4674,8 @@
           "404": {
             "description": "Channel template or app not found."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4143,8 +4684,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4170,7 +4711,8 @@
             "required": true,
             "description": "The id of the app where the templates belong to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
@@ -4220,17 +4762,7 @@
             "description": "Channel template or app not found."
           },
           "500": {
-            "description": "Operation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Validation error",
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4254,7 +4786,8 @@
             "required": true,
             "description": "The id of the app where the templates belong to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           }
@@ -4286,8 +4819,8 @@
           "404": {
             "description": "App not found."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4296,8 +4829,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4323,7 +4856,8 @@
             "required": true,
             "description": "The id of the app where the templates belong to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
@@ -4333,7 +4867,8 @@
             "required": true,
             "description": "The template ID.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 2
           }
@@ -4353,17 +4888,7 @@
             "description": "Channel template or app not found."
           },
           "500": {
-            "description": "Operation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Validation error",
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4373,7 +4898,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/apps/{appId}/messaging-templates/{code}": {
       "post": {
         "tags": [
           "MessagingTemplates"
@@ -4387,17 +4914,19 @@
             "required": true,
             "description": "The id of the app where the templates belong to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
           {
-            "name": "id",
+            "name": "code",
             "in": "path",
             "required": true,
-            "description": "The template ID.",
+            "description": "The template code.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 2
           }
@@ -4429,8 +4958,8 @@
           "404": {
             "description": "Channel template or app not found."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4439,8 +4968,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4464,17 +4993,19 @@
             "required": true,
             "description": "The id of the app where the templates belong to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
           {
-            "name": "id",
+            "name": "code",
             "in": "path",
             "required": true,
-            "description": "The template ID.",
+            "description": "The template code.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 2
           }
@@ -4499,8 +5030,8 @@
           "404": {
             "description": "Channel template or app not found."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4509,8 +5040,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4534,17 +5065,19 @@
             "required": true,
             "description": "The id of the app where the templates belong to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
           {
-            "name": "id",
+            "name": "code",
             "in": "path",
             "required": true,
             "description": "The template ID.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 2
           }
@@ -4556,8 +5089,8 @@
           "404": {
             "description": "Channel template or app not found."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4566,8 +5099,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4579,7 +5112,7 @@
         }
       }
     },
-    "/api/apps/{appId}/messaging-templates/{id}/{language}": {
+    "/api/apps/{appId}/messaging-templates/{code}/{language}": {
       "put": {
         "tags": [
           "MessagingTemplates"
@@ -4593,17 +5126,19 @@
             "required": true,
             "description": "The id of the app where the templates belong to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
           {
-            "name": "id",
+            "name": "code",
             "in": "path",
             "required": true,
-            "description": "The template ID.",
+            "description": "The template code.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 2
           },
@@ -4613,7 +5148,8 @@
             "required": true,
             "description": "The language.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 3
           }
@@ -4638,8 +5174,8 @@
           "404": {
             "description": "Channel template or app not found."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4648,8 +5184,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4673,17 +5209,19 @@
             "required": true,
             "description": "The id of the app where the templates belong to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
           {
-            "name": "id",
+            "name": "code",
             "in": "path",
             "required": true,
             "description": "The template ID.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 2
           },
@@ -4693,7 +5231,8 @@
             "required": true,
             "description": "The language.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 3
           }
@@ -4705,8 +5244,8 @@
           "404": {
             "description": "Channel template or app not found."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4715,8 +5254,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4742,7 +5281,8 @@
             "required": true,
             "description": "The id of the app where the templates belong to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
@@ -4792,17 +5332,7 @@
             "description": "Channel template or app not found."
           },
           "500": {
-            "description": "Operation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Validation error",
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4826,7 +5356,8 @@
             "required": true,
             "description": "The id of the app where the templates belong to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           }
@@ -4858,8 +5389,8 @@
           "404": {
             "description": "App not found."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4868,8 +5399,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4895,7 +5426,8 @@
             "required": true,
             "description": "The id of the app where the templates belong to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
@@ -4905,7 +5437,8 @@
             "required": true,
             "description": "The template ID.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 2
           }
@@ -4925,17 +5458,7 @@
             "description": "Channel template or app not found."
           },
           "500": {
-            "description": "Operation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Validation error",
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4945,7 +5468,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/apps/{appId}/sms-templates/{code}": {
       "post": {
         "tags": [
           "SmsTemplates"
@@ -4959,17 +5484,19 @@
             "required": true,
             "description": "The id of the app where the templates belong to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
           {
-            "name": "id",
+            "name": "code",
             "in": "path",
             "required": true,
-            "description": "The template ID.",
+            "description": "The template code.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 2
           }
@@ -5001,8 +5528,8 @@
           "404": {
             "description": "Channel template or app not found."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5011,8 +5538,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5036,17 +5563,19 @@
             "required": true,
             "description": "The id of the app where the templates belong to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
           {
-            "name": "id",
+            "name": "code",
             "in": "path",
             "required": true,
-            "description": "The template ID.",
+            "description": "The template code.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 2
           }
@@ -5071,8 +5600,8 @@
           "404": {
             "description": "Channel template or app not found."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5081,8 +5610,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5106,17 +5635,19 @@
             "required": true,
             "description": "The id of the app where the templates belong to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
           {
-            "name": "id",
+            "name": "code",
             "in": "path",
             "required": true,
             "description": "The template ID.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 2
           }
@@ -5128,8 +5659,8 @@
           "404": {
             "description": "Channel template or app not found."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5138,8 +5669,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5151,7 +5682,7 @@
         }
       }
     },
-    "/api/apps/{appId}/sms-templates/{id}/{language}": {
+    "/api/apps/{appId}/sms-templates/{code}/{language}": {
       "put": {
         "tags": [
           "SmsTemplates"
@@ -5165,17 +5696,19 @@
             "required": true,
             "description": "The id of the app where the templates belong to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
           {
-            "name": "id",
+            "name": "code",
             "in": "path",
             "required": true,
-            "description": "The template ID.",
+            "description": "The template code.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 2
           },
@@ -5185,7 +5718,8 @@
             "required": true,
             "description": "The language.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 3
           }
@@ -5210,8 +5744,8 @@
           "404": {
             "description": "Channel template or app not found."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5220,8 +5754,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5245,17 +5779,19 @@
             "required": true,
             "description": "The id of the app where the templates belong to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
           {
-            "name": "id",
+            "name": "code",
             "in": "path",
             "required": true,
             "description": "The template ID.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 2
           },
@@ -5265,7 +5801,8 @@
             "required": true,
             "description": "The language.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 3
           }
@@ -5277,8 +5814,8 @@
           "404": {
             "description": "Channel template or app not found."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5287,8 +5824,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5322,17 +5859,7 @@
             }
           },
           "500": {
-            "description": "Operation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Validation error",
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5373,8 +5900,8 @@
               }
             }
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5383,8 +5910,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5410,7 +5937,8 @@
             "required": true,
             "description": "The id of the app.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           }
@@ -5430,17 +5958,7 @@
             "description": "App not found."
           },
           "500": {
-            "description": "Operation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Validation error",
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5464,7 +5982,8 @@
             "required": true,
             "description": "The app id to update.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           }
@@ -5496,8 +6015,8 @@
           "404": {
             "description": "App not found."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5506,8 +6025,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5533,7 +6052,8 @@
             "required": true,
             "description": "The id of the app.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           }
@@ -5565,8 +6085,8 @@
           "404": {
             "description": "App not found."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5575,8 +6095,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5602,7 +6122,8 @@
             "required": true,
             "description": "The id of the app.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
@@ -5612,7 +6133,8 @@
             "required": true,
             "description": "The contributor to remove.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 2
           }
@@ -5631,8 +6153,8 @@
           "404": {
             "description": "App not found."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5641,8 +6163,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5668,7 +6190,8 @@
             "required": true,
             "description": "The id of the app where the integrations belong to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           }
@@ -5688,17 +6211,7 @@
             "description": "App not found."
           },
           "500": {
-            "description": "Operation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Validation error",
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5724,7 +6237,8 @@
             "required": true,
             "description": "The id of the app where the integration belong to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           }
@@ -5756,8 +6270,8 @@
           "404": {
             "description": "App not found."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5766,8 +6280,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5793,7 +6307,8 @@
             "required": true,
             "description": "The id of the app where the integration belong to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
@@ -5803,7 +6318,8 @@
             "required": true,
             "description": "The id of the integration.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 2
           }
@@ -5828,8 +6344,8 @@
           "404": {
             "description": "App not found."
           },
-          "500": {
-            "description": "Operation failed",
+          "400": {
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5838,8 +6354,8 @@
               }
             }
           },
-          "400": {
-            "description": "Validation error",
+          "500": {
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5863,7 +6379,8 @@
             "required": true,
             "description": "The id of the app where the email templates belong to.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 1
           },
@@ -5873,7 +6390,8 @@
             "required": true,
             "description": "The id of the integration.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             },
             "x-position": 2
           }
@@ -5885,42 +6403,8 @@
           "404": {
             "description": "App not found."
           },
-          "500": {
-            "description": "Operation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
           "400": {
-            "description": "Validation error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/diagnostics/dump": {
-      "get": {
-        "tags": [
-          "Diagnostics"
-        ],
-        "summary": "Creates a dump and writes it into storage..",
-        "operationId": "Diagnostics_GetDump",
-        "responses": {
-          "204": {
-            "description": "Dump created successful."
-          },
-          "501": {
-            "description": "Not configured.",
+            "description": "Validation error.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5930,61 +6414,7 @@
             }
           },
           "500": {
-            "description": "Operation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Validation error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/diagnostics/gcdump": {
-      "get": {
-        "tags": [
-          "Diagnostics"
-        ],
-        "summary": "Creates a gc dump and writes it into storage.",
-        "operationId": "Diagnostics_GetGCDump",
-        "responses": {
-          "204": {
-            "description": "Dump created successful."
-          },
-          "501": {
-            "description": "Not configured.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Operation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Validation error",
+            "description": "Operation failed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -6135,6 +6565,56 @@
         "type": "object",
         "additionalProperties": {
           "type": "string"
+        }
+      },
+      "ErrorDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "The error message.",
+            "nullable": true
+          },
+          "errorCode": {
+            "type": "string",
+            "description": "The error code.",
+            "nullable": true
+          },
+          "traceId": {
+            "type": "string",
+            "description": "The optional trace id.",
+            "nullable": true
+          },
+          "type": {
+            "type": "string",
+            "description": "The error type, usually a link.",
+            "nullable": true
+          },
+          "details": {
+            "type": "array",
+            "description": "Detailed error messages.",
+            "nullable": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "statusCode": {
+            "type": "integer",
+            "description": "Status code of the http response.",
+            "format": "int32"
+          }
+        }
+      },
+      "AdminProfileDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "token": {
+            "type": "string",
+            "description": "The token for the integrated app.",
+            "nullable": true
+          }
         }
       },
       "UpdateProfileDto": {
@@ -6470,6 +6950,11 @@
           "deviceType": {
             "description": "The device type.",
             "$ref": "#/components/schemas/MobileDeviceType"
+          },
+          "deviceIdentifier": {
+            "type": "string",
+            "description": "A unique identifier for the device.",
+            "nullable": true
           },
           "lastWakeup": {
             "type": "string",
@@ -6878,6 +7363,7 @@
           },
           "confirmMode": {
             "description": "The confirmation mode.",
+            "nullable": true,
             "$ref": "#/components/schemas/ConfirmMode"
           }
         }
@@ -7159,6 +7645,10 @@
             "description": "The send status.",
             "$ref": "#/components/schemas/ProcessStatus"
           },
+          "configuration": {
+            "description": "The configuration for the device.",
+            "$ref": "#/components/schemas/SendConfiguration"
+          },
           "lastUpdate": {
             "type": "string",
             "description": "The last update.",
@@ -7167,6 +7657,24 @@
           "detail": {
             "type": "string",
             "description": "The details.",
+            "nullable": true
+          },
+          "firstDelivered": {
+            "type": "string",
+            "description": "The first time the notification has been marked as delivered for this identifier.",
+            "format": "date-time",
+            "nullable": true
+          },
+          "firstSeen": {
+            "type": "string",
+            "description": "The first time the notification has been marked as seen for this identifier.",
+            "format": "date-time",
+            "nullable": true
+          },
+          "firstConfirmed": {
+            "type": "string",
+            "description": "The first time the notification has been marked as confirmed for this identifier.",
+            "format": "date-time",
             "nullable": true
           }
         }
@@ -7188,6 +7696,12 @@
           "Failed",
           "Skipped"
         ]
+      },
+      "SendConfiguration": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        }
       },
       "HandledInfoDto": {
         "type": "object",
@@ -7294,6 +7808,11 @@
             "description": "The tracking url that needs to be invoked to mark the notification as confirmed.",
             "nullable": true
           },
+          "correlationId": {
+            "type": "string",
+            "description": "The correlation ID, that can be used to query notifications.",
+            "nullable": true
+          },
           "data": {
             "type": "string",
             "description": "Optional data, usually a json object.",
@@ -7375,6 +7894,11 @@
             "description": "The channel name.",
             "nullable": true
           },
+          "configurationId": {
+            "type": "string",
+            "description": "The configuration ID.",
+            "format": "guid"
+          },
           "deviceIdentifier": {
             "type": "string",
             "description": "The device identifier.",
@@ -7419,6 +7943,11 @@
           "deviceType": {
             "description": "The device type.",
             "$ref": "#/components/schemas/MobileDeviceType"
+          },
+          "deviceIdentifier": {
+            "type": "string",
+            "description": "A unique identifier for the device.",
+            "nullable": true
           }
         }
       },
@@ -7437,6 +7966,11 @@
           "deviceType": {
             "description": "The device type.",
             "$ref": "#/components/schemas/MobileDeviceType"
+          },
+          "deviceIdentifier": {
+            "type": "string",
+            "description": "A unique identifier for the device.",
+            "nullable": true
           }
         }
       },
@@ -7833,6 +8367,11 @@
           "templateCode": {
             "type": "string",
             "description": "The template code.",
+            "nullable": true
+          },
+          "correlationId": {
+            "type": "string",
+            "description": "The correlation ID, that can be used to query notifications.",
             "nullable": true
           },
           "templateVariants": {
@@ -8576,8 +9115,7 @@
         "type": "object",
         "additionalProperties": false,
         "required": [
-          "email",
-          "role"
+          "email"
         ],
         "properties": {
           "email": {
@@ -8588,7 +9126,7 @@
           "role": {
             "type": "string",
             "description": "The role.",
-            "minLength": 1
+            "nullable": true
           }
         }
       },
@@ -8906,93 +9444,7 @@
             "nullable": true
           }
         }
-      },
-      "ErrorDto": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "message": {
-            "type": "string",
-            "description": "The error message.",
-            "nullable": true
-          },
-          "errorCode": {
-            "type": "string",
-            "description": "The error code.",
-            "nullable": true
-          },
-          "traceId": {
-            "type": "string",
-            "description": "The optional trace id.",
-            "nullable": true
-          },
-          "type": {
-            "type": "string",
-            "description": "The error type, usually a link.",
-            "nullable": true
-          },
-          "details": {
-            "type": "array",
-            "description": "Detailed error messages.",
-            "nullable": true,
-            "items": {
-              "type": "string"
-            }
-          },
-          "statusCode": {
-            "type": "integer",
-            "description": "Status code of the http response.",
-            "format": "int32"
-          }
-        }
       }
     }
-  },
-  "tags": [
-    {
-      "name": "User"
-    },
-    {
-      "name": "Users"
-    },
-    {
-      "name": "Topics"
-    },
-    {
-      "name": "SystemUsers"
-    },
-    {
-      "name": "Ping"
-    },
-    {
-      "name": "Notifications"
-    },
-    {
-      "name": "MobilePush"
-    },
-    {
-      "name": "Media"
-    },
-    {
-      "name": "Logs"
-    },
-    {
-      "name": "Events"
-    },
-    {
-      "name": "Configs"
-    },
-    {
-      "name": "EmailTemplates"
-    },
-    {
-      "name": "MessagingTemplates"
-    },
-    {
-      "name": "SmsTemplates"
-    },
-    {
-      "name": "Apps"
-    }
-  ]
+  }
 }
