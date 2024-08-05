@@ -1,4 +1,4 @@
-module github.com/catalystsquad/notifo-client-go
+module github.com/catalystcommunity/notifo-client-go
 
 go 1.18
 
